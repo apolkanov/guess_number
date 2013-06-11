@@ -32,21 +32,21 @@ public:
 
 private:
 int64 next_number(const vector<pair<int64, int64> >& l, int64 fraud_number) {
-	int64 sum = 0;
-	int64 m = 0;
-	int64 i = 0;
-	vector<pair<int64, int64> >::const_iterator it = l.begin();
-	for (; it != l.end(); ++it) {
-		if (it->second <= fraud_number) {	
-		  int64 w = fraud_number - it->second + 1; 
-		  sum += w;
-		  m += w * i;		  
-		}
-		++i;		
-	}
-	if (0 == sum)
-		return l.size() / 2;
-	return m / sum;
+ double sum = 0;
+ double m = 0;
+ int64 i = 0;
+ vector<pair<int64, int64> >::const_iterator it = l.begin();
+ for (; it != l.end(); ++it) {
+  if (it->second <= fraud_number) { 
+    double w = pow(1.2, fraud_number - it->second + 1.0);
+    sum += w;
+    m += w * i;
+  }
+  ++i;  
+ }
+ if (0 == sum)
+  return l.size() / 2;
+ return m / sum;
 }
 
 void apply_answer(vector<pair<int64, int64> >& l, int64 number, bool answer) {	
