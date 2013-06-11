@@ -11,7 +11,7 @@ typedef vector<pair<double, int64> > Digits;
 class Guesser {
 
 public:
-  Guesser(int64 N, int64 fraud) : mN(N), mFraud(fraud), mAttempt(0), MULT(40) {
+  Guesser(int64 N, int64 fraud) : mN(N), mFraud(fraud), mAttempt(0), MULT(2.7) {
     mL.resize(mN);
 	for (size_t i = 0; i < mL.size(); ++i) {
 		mL[i].first = 1;
@@ -51,6 +51,7 @@ int64 next_number1(Digits& l, int64 fraud_number) {
 	 if (left < right)
 		 sumRight += l[right--].first;
  }
+ int64 res = right > l.size() / 2 + 1 ? right  : right - 1;
  return right - 1;
 }
 
@@ -95,7 +96,7 @@ private:
 void check() {
 
   Guesser g(1000000, 100);
-  int64 digit = 0;
+  int64 digit = 799998;
   int lie = 0;
   while(g.Guess() == -1) {
     int64 number = g.Next();
